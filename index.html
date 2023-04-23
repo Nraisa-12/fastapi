@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Medical Codexes</title>
+  </head>
+  <body>
+    <h1>ICD-10</h1>
+    <p id="icd-10"></p>
+    <h1>ICD-11</h1>
+    <p id="icd-11"></p>
+
+    <script>
+      fetch('/icd-10')
+        .then(response => response.json())
+        .then(data => {
+          const icd10 = document.getElementById('icd-10')
+          icd10.innerHTML = JSON.stringify(data)
+        })
+
+      fetch('/icd-11')
+        .then(response => response.json())
+        .then(data => {
+          const icd11 = document.getElementById('icd-11')
+          icd11.innerHTML = JSON.stringify(data)
+        })
+    </script>
+  </body>
+</html>

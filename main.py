@@ -2,13 +2,26 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/icd10")
-def get_icd10():
-    return {"icd10": ["A00", "A01", "A02", ... ]}
+icd_10 = {
+    "A00": "Cholera",
+    "A01": "Typhoid fever",
+    "B02": "Varicella",
+}
 
-@app.get("/cpt")
-def get_cpt():
-    return {"cpt": ["10021", "10022", "10030", ... ]}
+icd_11 = {
+    "BA00": "Cholera",
+    "BA01": "Typhoid fever",
+    "BB02": "Varicella",
+}
+
+@app.get("/icd-10")
+async def get_icd_10():
+    return icd_10
+
+@app.get("/icd-11")
+async def get_icd_11():
+    return icd_11
+
 
 
 

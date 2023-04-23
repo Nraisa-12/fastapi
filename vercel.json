@@ -7,13 +7,18 @@
       }
     ],
     "routes": [
+      { "handle": "filesystem" },
       {
-        "src": "/icd10",
+        "src": "/icd-10",
         "dest": "main.py"
       },
       {
-        "src": "/cpt",
+        "src": "/icd-11",
         "dest": "main.py"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "index.html"
       }
     ]
   }
