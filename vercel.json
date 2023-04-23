@@ -1,22 +1,18 @@
 {
-    "version": 2,
     "builds": [
       {
         "src": "main.py",
-        "use": "@now/python"
+        "use": "@vercel/python"
       }
     ],
     "routes": [
       {
-        "src": "/codex/(.*)",
-        "dest": "/main.py/codex/$1"
-      },
-      {
         "src": "/(.*)",
-        "dest": "/main.py/$1"
+        "dest": "main.py"
       }
     ]
   }
+  
   
   
   

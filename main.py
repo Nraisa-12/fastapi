@@ -2,20 +2,28 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-codexes = {
-    "ICD-10": ["A00", "A01", "B00", "B01"],
-    "CPT": ["10021", "10022", "10040", "10060"]
-}
-
 @app.get("/")
 def read_root():
-    return {"Hello World"}
+    return {"message": "Welcome to the medical codexes API!"}
 
-@app.get("/codex/{codex_name}")
-def read_codex(codex_name: str):
-    if codex_name not in codexes:
-        return {"Error": "Codex not found"}
-    return {"Codex": codex_name, "Codes": codexes[codex_name]}
+@app.get("/codex1")
+def read_codex1():
+    codex1 = {
+        "ICD-10": "International Classification of Diseases, 10th Revision",
+        "CPT": "Current Procedural Terminology",
+        "HCPCS": "Healthcare Common Procedure Coding System"
+    }
+    return codex1
+
+@app.get("/codex2")
+def read_codex2():
+    codex2 = {
+        "SNOMED CT": "Systematized Nomenclature of Medicine Clinical Terms",
+        "LOINC": "Logical Observation Identifiers Names and Codes",
+        "RxNorm": "United States National Library of Medicine's standard clinical drug vocabulary"
+    }
+    return codex2
+
 
 
 
