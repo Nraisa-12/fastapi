@@ -1,4 +1,5 @@
 {
+    "version": 2,
     "builds": [
       {
         "src": "main.py",
@@ -7,14 +8,15 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/icd10",
+        "dest": "main.py"
+      },
+      {
+        "src": "/cpt",
         "dest": "main.py"
       }
-    ],
-    "env": {
-      "MODULE_NAME": "main",
-      "APP_MODULE": "main:app"
-    }
+    ]
   }
+  
   
   
