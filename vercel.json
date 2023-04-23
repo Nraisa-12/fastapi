@@ -1,27 +1,17 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "main.py",
-        "use": "@vercel/python"
-      }
+        {
+            "src": "main.py",
+            "use": "@vercel/python"
+        }
     ],
     "routes": [
-      { "handle": "filesystem" },
-      {
-        "src": "/icd-10",
-        "dest": "main.py"
-      },
-      {
-        "src": "/icd-11",
-        "dest": "main.py"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "index.html"
-      }
+        { "src": "/", "dest": "/.vercel/vercel.json" },
+        { "src": "/(.*)", "dest": "/main.py" }
     ]
-  }
+}
+
   
   
   
