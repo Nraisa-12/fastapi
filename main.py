@@ -2,27 +2,27 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the medical codexes API!"}
+# Define the two medical codexes as dictionaries
+icd10 = {
+    "A00": "Cholera",
+    "B37": "Candidiasis",
+    "C50": "Malignant neoplasm of breast"
+}
 
-@app.get("/codex1")
-def read_codex1():
-    codex1 = {
-        "ICD-10": "International Classification of Diseases, 10th Revision",
-        "CPT": "Current Procedural Terminology",
-        "HCPCS": "Healthcare Common Procedure Coding System"
-    }
-    return codex1
+cpt = {
+    "10021": "Fine needle aspiration; without imaging guidance",
+    "99213": "Office or other outpatient visit for the evaluation and management of an established patient, which requires at least 2 of these 3 key components: an expanded problem focused history, an expanded problem focused examination, medical decision making of low complexity."
+}
 
-@app.get("/codex2")
-def read_codex2():
-    codex2 = {
-        "SNOMED CT": "Systematized Nomenclature of Medicine Clinical Terms",
-        "LOINC": "Logical Observation Identifiers Names and Codes",
-        "RxNorm": "United States National Library of Medicine's standard clinical drug vocabulary"
-    }
-    return codex2
+# Define two API endpoints to serve the codexes as JSON
+@app.get("/icd10")
+async def get_icd10():
+    return icd10
+
+@app.get("/cpt")
+async def get_cpt():
+    return cpt
+
 
 
 
