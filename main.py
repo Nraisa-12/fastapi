@@ -1,8 +1,16 @@
-from time import time
-from fastapi import FastAPI, __version__
+from fastapi import FastAPI
 
-app = FastAPI() # This is what will be refrenced in config
+app = FastAPI()
 
-@app.get('/')
-async def hello():
-    return {'res': 'pong', 'version': __version__, "time": time()}
+@app.get("/")
+async def read_root():
+    return {"Medical codex"}
+
+@app.get("/medical-codex-1")
+async def read_medical_codex_1():
+    return {"code": "A01.0", "description": "Typhoid fever"}
+
+@app.get("/medical-codex-2")
+async def read_medical_codex_2():
+    return {"code": "C50.9", "description": "Breast cancer, unspecified"}
+
