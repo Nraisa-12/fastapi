@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-# Define the two medical codexes as dictionaries
+
 icd10 = {
     "A00": "Cholera",
     "B37": "Candidiasis",
@@ -14,7 +14,7 @@ cpt = {
     "99213": "Office or other outpatient visit for the evaluation and management of an established patient, which requires at least 2 of these 3 key components: an expanded problem focused history, an expanded problem focused examination, medical decision making of low complexity."
 }
 
-# Define two API endpoints to serve the codexes as JSON
+
 @app.get("/icd10")
 async def get_icd10():
     return icd10
