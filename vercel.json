@@ -1,24 +1,20 @@
 {
-    "functions": {
-      "api/*": {
-        "memory": 128,
-        "runtime": "@vercel/python",
-        "maxDuration": 10
+    "builds": [
+      {
+        "src": "main.py",
+        "use": "@vercel/python"
       }
-    },
+    ],
     "routes": [
       {
-        "src": "/medical-codex-1",
-        "dest": "api/main/read_medical_codex_1"
-      },
-      {
-        "src": "/medical-codex-2",
-        "dest": "api/main/read_medical_codex_2"
-      },
-      {
         "src": "/(.*)",
-        "dest": "api/main/read_root"
+        "dest": "main.py"
       }
-    ]
+    ],
+    "env": {
+      "MODULE_NAME": "main",
+      "APP_MODULE": "main:app"
+    }
   }
+  
   
