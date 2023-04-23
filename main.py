@@ -2,20 +2,22 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-med_codex1 = ["code1", "code2", "code3"]
-med_codex2 = ["code4", "code5", "code6"]
+codexes = {
+    "ICD-10": ["A00", "A01", "B00", "B01"],
+    "CPT": ["10021", "10022", "10040", "10060"]
+}
 
 @app.get("/")
-async def root():
-    return {"message": "Welcome to the medical codex API!"}
+def read_root():
+    return {"Hello World"}
 
-@app.get("/codex1")
-async def get_codex1():
-    return {"codex1": med_codex1}
+@app.get("/codex/{codex_name}")
+def read_codex(codex_name: str):
+    if codex_name not in codexes:
+        return {"Error": "Codex not found"}
+    return {"Codex": codex_name, "Codes": codexes[codex_name]}
 
-@app.get("/codex2")
-async def get_codex2():
-    return {"codex2": med_codex2}
+
 
 
 
