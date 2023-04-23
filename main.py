@@ -2,26 +2,13 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+med_codex1 = ["code1", "code2", "code3"]
+med_codex2 = ["codeA", "codeB", "codeC"]
 
-icd10 = {
-    "A00": "Cholera",
-    "B37": "Candidiasis",
-    "C50": "Malignant neoplasm of breast"
-}
+@app.get("/med_codexes")
+async def get_med_codexes():
+    return {"med_codex1": med_codex1, "med_codex2": med_codex2}
 
-cpt = {
-    "10021": "Fine needle aspiration; without imaging guidance",
-    "99213": "Office or other outpatient visit for the evaluation and management of an established patient, which requires at least 2 of these 3 key components: an expanded problem focused history, an expanded problem focused examination, medical decision making of low complexity."
-}
-
-
-@app.get("/icd10")
-async def get_icd10():
-    return icd10
-
-@app.get("/cpt")
-async def get_cpt():
-    return cpt
 
 
 
