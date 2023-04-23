@@ -2,20 +2,25 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-medical_codex1 = {"code": "ABC123", "name": "Medical Codex 1"}
-medical_codex2 = {"code": "DEF456", "name": "Medical Codex 2"}
 
-@app.get("/")
-async def root():
-    return {"Medical Codex API"}
+icd10 = {
+    "A00": "Cholera",
+    "A01": "Typhoid fever",
+    "A02": "Salmonella infections",
+    # ...
+}
 
-@app.get("/codex1")
-async def get_codex1():
-    return medical_codex1
+cpt = {
+    "10060": "Incision and drainage of abscess",
+    "99213": "Office or other outpatient visit for the evaluation and management of an established patient",
+    "99214": "Office or other outpatient visit for the evaluation and management of an established patient",
+    # ...
+}
 
-@app.get("/codex2")
-async def get_codex2():
-    return medical_codex2
+@app.get("/medical_codexes")
+async def get_medical_codexes():
+    return {"icd10": icd10, "cpt": cpt}
+
 
 
 
