@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/icd")
+@app.get("/")
 async def get_icd_codes():
     icd1 = {
         "code": "A01.1",
